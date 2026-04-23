@@ -7,8 +7,10 @@ class Task(BaseModel):
     priority: Optional[str] = "medium"
     time: Optional[str] = None
 
+
 class TaskList(BaseModel):
     tasks: List[Task]
+
 
 class Intent(BaseModel):
     type: Literal["task", "chat"]

@@ -13,9 +13,7 @@ def extract_tasks(text: str, context=None):
 
     prompt = f"""
     {context_text}
-
     Extract tasks from the input.
-
     Input: {text}
     """
 

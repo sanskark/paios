@@ -1,4 +1,4 @@
-def execute_plan(plan, tasks):
+def execute_plan(plan):
     results = []
 
     for step in plan:

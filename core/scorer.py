@@ -1,7 +1,6 @@
 def score_output(result, issues=None):
     score = 1.0
 
-    # penalize issues
     if issues:
         score -= 0.4 * len(issues)
 

@@ -71,11 +71,11 @@ if st.session_state.get("confirm_delete"):
         st.session_state.confirm_delete = False
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### 📊 Stats")
+st.sidebar.markdown("### Stats")
 st.sidebar.write(f"Messages: {len(st.session_state.history)}")
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### 🧠 Memory")
+st.sidebar.markdown("### Memory")
 
 try:
     mem_res = requests.get(MEMORY_URL)
@@ -90,10 +90,10 @@ try:
         st.sidebar.markdown("_No memory stored yet_")
 
 except:
-    st.sidebar.markdown("⚠️ Could not load memory")
+    st.sidebar.markdown("⚠Could not load memory")
 
 # ---------- MAIN ----------
-st.title("💬 Personal AI Assistant")
+st.title("Personal AI Assistant")
 
 # ---------- CHAT DISPLAY ----------
 for item in st.session_state.history:
@@ -109,12 +109,12 @@ for item in st.session_state.history:
 
         # Answer
         if output.get("answer"):
-            st.markdown(f"**🤖 {output['answer']}**")
+            st.markdown(f"**{output['answer']}**")
 
         # Tasks
         tasks = output.get("tasks", [])
         if tasks:
-            st.markdown("📋 **Tasks:**")
+            st.markdown("**Tasks:**")
             for t in tasks:
                 time = t.get("time")
                 if time:
@@ -144,7 +144,6 @@ def send_message():
     if not user_input:
         return
 
-    # 🔹 SYSTEM COMMAND: memory
     if user_input.lower() in ["give me my memory", "show memory"]:
         try:
             response = requests.get(MEMORY_URL)
@@ -164,7 +163,7 @@ def send_message():
 
         except:
             result = {
-                "answer": "⚠️ Could not fetch memory",
+                "answer": "Could not fetch memory",
                 "tasks": [],
                 "memory": None,
                 "confidence": 0
@@ -180,7 +179,7 @@ def send_message():
             result = response.json()
         except:
             result = {
-                "answer": "⚠️ Error from server",
+                "answer": "Error from server",
                 "tasks": [],
                 "memory": None,
                 "confidence": 0
@@ -192,7 +191,6 @@ def send_message():
         "output": result
     })
 
-    # Clear input safely
     st.session_state.input = ""
 
 # ---------- INPUT ----------

@@ -19,9 +19,6 @@ def add_to_index(text, metadata):
 
 
 def search_index(query, k=3):
-    from memory.embedding import embed
-    import numpy as np
-
     if len(documents) == 0:
         return []
 
